@@ -34,6 +34,31 @@ If you have not learnt web apps, do not worry -- you do not need to know much ab
 
 For further examples, look [here][1]
 
+## Forget About the UI
+
+I think for a  beginner, most of the noise comes from the UI components that Rshiny makes available. So I made the intro to UI very short,
+
+Layout components are the "containers" or "divs" of your page. They layout your page into sections making it neat and organised.You often see these layout components, such as:
+
+1. sidebarLayout
+2. MainPanel
+3. fluidPage
+4. fluidRow
+5. column
+
+In RShiny they have control widgets. 
+
+
+On the contrary, the UI is the thing I spend on thet most after getting used to Rshiny.
+
+https://rstudio.github.io/shinydashboard/structure.html#valuebox
+
+## Look at app.R 
+
+
+
+
+
 ## Reactivity
 
 Reactivity 
@@ -46,7 +71,10 @@ Reactivity
 3. Do not care too much about UI objects
 4. Making HTML
 5. Reactivity is embedded in a lot of functions
+6. fluid
 
+
+## Back to UI
 
 ## Resources 
 
