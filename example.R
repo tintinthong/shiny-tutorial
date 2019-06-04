@@ -1,3 +1,4 @@
+library(shiny)
 runExample("01_hello") #changing histogram based on bin size
 runExample("02_text") #changing number of rows of data set exposed
 runExample("03_reactivity") #reactive changing tab 

@@ -1,4 +1,4 @@
-library(shiny)
+runExample("02_text")
 
 #this is a great script to know how to use Rshiny
 
