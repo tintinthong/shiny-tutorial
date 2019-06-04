@@ -23,27 +23,31 @@ ui <- fluidPage(
 server <- function(input, output) {
   
   
+  #make reactive variables  in server 
   x<-reactive({input$numberIn})
-  
   y<-reactive({input$numberIn2})
 
+  #make an output based on input 
   output$numberOut<-renderText({
      input$numberIn
     })
   
+  #make an output based on input
   output$numberOut2<-renderText({
     input$numberIn2
   })
 
+  #make an output based on  reactive variables
   output$sumOut<-renderText(
     x()+y() #remmber must take reactive and  use as function
   )
   
+  #listen to changes in reactive inputs
   observe({
     print(paste("this is whatever", x(), y()))
   })
   
-  
+  #output a text
   output$global<-renderText(
     'whatever'
   )
