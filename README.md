@@ -55,6 +55,16 @@ In RShiny they have control widgets.
 4. textInput
 .. and more 
 
+Think of it like lego. Try it out.
+
+
+##  Running the Code
+
+Only when adding 
+
+```
+shinyApp(ui,server)
+```
 
 
 ## Look at app.R 
@@ -83,6 +93,8 @@ Build these applications,
 
 
 ## Back to UI
+
+
 
 ## Resources 
 
