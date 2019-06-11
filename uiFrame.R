@@ -13,6 +13,7 @@ library(shiny)
 #tabsetPanel()
 #tabPanel()
 #navBarPage()
+#conditionalPanel()
 
 #https://shiny.rstudio.com/articles/layout-guide.html
 

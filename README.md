@@ -57,6 +57,10 @@ In RShiny they have control widgets.
 
 Think of it like lego. Try it out.
 
+## Reactivity
+
+Reactive is inside curly brackets,e.g. reactive({}),renderTable({})
+
 
 ##  Running the Code
 
@@ -70,6 +74,8 @@ shinyApp(ui,server)
 ## Look at app.R 
 
 I made this app to show you the simple things  you need to know -- demonstrating simple reactivity / simple logging in console / simple ui.
+
+## How to prototype 
 
 ## Assignments (Choose one of each)
 
