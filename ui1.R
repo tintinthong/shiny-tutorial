@@ -42,8 +42,6 @@ ui <- fluidPage(
   titlePanel("This is my shiny app"),
  
 
-
-    
     sidebarPanel(
       helpText("Inside my sidebarPanel"),
       sliderInput("sliderID",
