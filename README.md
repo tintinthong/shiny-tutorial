@@ -145,13 +145,13 @@ Build these applications,
 
 There are extremely good resources to learn Rshiny [here][2]
 
-[1] https://shiny.rstudio.com/gallery/
+[1]: https://shiny.rstudio.com/gallery/
 
-[2] https://shiny.rstudio.com/tutorial/
+[2]: https://shiny.rstudio.com/tutorial/
 
-[3] https://deanattali.com/shiny/
+[3]: https://deanattali.com/shiny/
 
-[4] https://rstudio.github.io/shinydashboard/structure.html#valuebox
+[4]: https://rstudio.github.io/shinydashboard/structure.html#valuebox
 <!-- Row-based layout and column based layout -->
-[5] https://rstudio.github.io/shiny/tutorial/#welcome
+[5]: https://rstudio.github.io/shiny/tutorial/#welcome
 <!-- Tutorial on Rshiny -->
