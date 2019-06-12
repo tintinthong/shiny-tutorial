@@ -16,4 +16,10 @@ datanew %>%select(math.score,interval )%>%group_by(interval) %>% tally()
 
 
 x<-1:100
-table(cut(sample(x,1000,replace=TRUE),seq(0,100,10))
+t<-table(cut(sample(x,1000,replace=TRUE),seq(0,100,10)))
+   
+str(t) 
+attr(t,"dimnames")[[1]]= paste(toupper(rev(letters[1:10])),attr(t,"dimnames")[[1]])
+
+toupper(letters[1:10])
+str(t)

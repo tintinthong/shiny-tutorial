@@ -12,16 +12,6 @@ data=read.csv("./StudentsPerformance.csv")
 data = data[,"math.score"]
 #x=rnorm(1000,50,10)
 
-
-# printSummary= function(vec){
-#   
-#   ls=list(name=deparse(substitute(data)),
-#           summary=summary(vec),
-#           sd=sd(vec))
-#   print(ls)
-#   return(ls)
-# }
-
 ui <- fluidPage(
   
   titlePanel("Scores for Students"),
@@ -39,7 +29,6 @@ ui <- fluidPage(
         sliderInput("A","Mark for A (Green)",80,min=1, max=100)
         
         
-    
     
       ),
     
@@ -102,13 +91,16 @@ server <- function(input, output,session) {
     })
     
     varFreqTable= reactive({
-      table(cut(data,c(0,varE(),varD(),varC(),varB(),varA(),100),include.lowest=TRUE))
+      freqtable=table(cut(data,c(0,varE(),varD(),varC(),varB(),varA(),100),include.lowest=TRUE))
+      attr(freqtable,"dimnames")[[1]]= paste(toupper(rev(letters[1:6])),attr(freqtable  ,"dimnames")[[1]])
+      freqtable
     })
     
     
   #OBSERVE STUFF HERE 
   observe({
     print("whatever")
+    print(varFreqTable)
   })
   
   # check for impossibilities
@@ -160,11 +152,6 @@ server <- function(input, output,session) {
   output$freqTable= renderTable({
     varFreqTable()
   })
-  
-  
-  
-  
-
   
   
 }
