@@ -23,11 +23,14 @@ data_TOR= data_TOR  %>% select(Date ,WINorLOSS,Opponent, TeamPoints, OpponentPoi
 data_TOR %>% group_by(Opponent)%>% summarise(meanTeamPoints= mean(TeamPoints), meanOpponentPoints= mean(OpponentPoints))
 
 #WINorLOSS against each team
-data_TOR %>% group_by(Opponent,WINorLOSS)%>% summarise(winCount=n())
+data_TOR %>% filter(Opponent=="ATL")%>%group_by(WINorLOSS)%>%ggplot(aes(WINorLOSS))+geom_bar(aes(fill=WINorLOSS))
 
 #Assists
-data_TOR  %>% group_by(Opponent)%>%  summarise(meanAssists= mean(Assists),meanOpponentAssits=mean(Opp.Assists))
+data_TOR  %>% filter(Opponent=="ATL")%>%group_by(Opponent)%>%summarise(meanAssists= mean(Assists))%>%summarise(meanOpponentAssits=mean(Opp.Assists))%>% melt(id.vars='Opponent')%>%ggplot(aes(x=variable,y=value))+geom_bar(aes(fill=variable),stat="identity")
+colnames(data_TOR)
 
+
+data_TOR%>% filter(Opponent=="ATL")%>% group_by(Opponent)%>%summarise(meanAssists= mean(Assists),meanOpponentAssists=mean(Opp.Assists))%>%melt(id.vars='Opponent')%>%ggplot(aes(x=variable,y=value))+geom_bar(aes(fill=variable),stat="identity")
 #Rebounds 
 
 data_TOR  %>% group_by(Opponent)%>%  summarise(meanTotalRebounds= mean(TotalRebounds),meanOpponentTotalRebounds=mean(Opp.TotalRebounds))s
@@ -65,3 +68,27 @@ attr(t,"dimnames")[[1]]= paste(toupper(rev(letters[1:10])),attr(t,"dimnames")[[1
 
 toupper(letters[1:10])
 str(t)
+
+
+x <- c(5,17,31,9,17,10,30,28,16,29,14,34)
+y <- c(1,2,3,4,5,6,7,8,9,10,11,12)
+day <- c(1,2,3,4,5,6,7,8,9,10,11,12)
+
+library(reshape2)
+df1 <- data.frame(x, y, day)
+df1
+df2 <- melt(df1, id.vars='day')
+df2
+head(df2)
+
+
+bleach_time <- c(0, 0, 0, 0, 0, 0, 24, 24, 24, 24, 24, 24)
+conc <- c(23, 54, 12, 96, 34, 65, 34, 22, 35, 06, 90, 69)
+df <- data_frame(bleach_time, conc)
+
+df%>%group_by(bleach_time )%>%summarise(mean=mean(conc))
+
+df_p <- ggplot(df, aes(as.factor(bleach_time), conc))+geom_bar(stat = "identity", na.rm = TRUE)
+df_p
+
+stat_summary(fun.y = mean, geom = "bar", na.rm = TRUE)
