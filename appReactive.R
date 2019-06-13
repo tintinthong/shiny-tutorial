@@ -4,12 +4,11 @@ ui <- fluidPage(
   
 
   fluidRow(
-    numericInput("numberIn","Number Input",10,min=1,max=100),
-    numericInput("numberIn2","Number Input",10, min=1,max=100),
+    numericInput("numberIn","x",10,min=1,max=100),
+    numericInput("numberIn2","y",10, min=1,max=100),
     textOutput("numberOut"),
     textOutput("numberOut2"),
-    textOutput("sumOut"),
-    textOutput("global")
+    textOutput("sumOut")
     
   )
   
@@ -27,28 +26,26 @@ server <- function(input, output) {
 
   #make an output based on input 
   output$numberOut<-renderText({
-     input$numberIn
+     paste("this is x",input$numberIn)
     })
   
   #make an output based on input
   output$numberOut2<-renderText({
-    input$numberIn2
+    paste("this is y ", input$numberIn2)
   })
 
   #make an output based on  reactive variables
   output$sumOut<-renderText(
-    x()+y() #remmber must take reactive and  use as function
+    paste("this is the sum of x  and y",
+          x()+y() #remmber must take reactive and  use as function
+    )
   )
   
   #listen to changes in reactive inputs
   observe({
-    print(paste("this is whatever", x(), y()))
+    print(paste("these are the values  of x and y ", x(), y()))
   })
   
-  #output a text
-  output$global<-renderText(
-    'whatever'
-  )
 }
 
 shinyApp(ui = ui, server = server)

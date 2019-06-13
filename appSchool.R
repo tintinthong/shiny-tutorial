@@ -40,7 +40,7 @@ ui <- fluidPage(
       fluidRow(
      
                h3(textOutput("mean")),
-               h4(textOutput("n")),
+               h3(textOutput("n")),
                h4(textOutput("quantile"))
         
       ),
@@ -94,10 +94,6 @@ server <- function(input, output,session) {
     
     
   #OBSERVE STUFF HERE 
-  observe({
-    print("whatever")
-    print(varFreqTable)
-  })
   
   # check for impossibilities
   observe({
@@ -114,6 +110,8 @@ server <- function(input, output,session) {
     if(varB()>=varA()){
       updateSliderInput(session,"B",value=varA()-1)
     }
+  
+   
   })
 
   #RENDER  ALL OUTPUTS
