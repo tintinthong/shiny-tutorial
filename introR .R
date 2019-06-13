@@ -43,6 +43,10 @@ mod<-lm(y~x,data)
 plot(1, type="n", xlab="", ylab="", xlim=c(0, 10), ylim=c(0, 10))
 abline(mod)
 
+rnorm(1000,mean=10,sd=200)
+rbinom(1000,10,0.5)
+rpois(100,10)
+
 
 
 

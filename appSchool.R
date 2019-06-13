@@ -10,7 +10,7 @@ library(shiny)
 
 data=read.csv("StudentsPerformance.csv")
 data = data[,"math.score"]
-#x=rnorm(1000,50,10)
+
 
 ui <- fluidPage(
   
@@ -22,13 +22,12 @@ ui <- fluidPage(
     sidebarPanel(
       
       #INPUTS
-        sliderInput("E","Mark for E (Red)",10,min=1, max=100),
-        sliderInput("D","Mark for D (Orange)",20,min=1, max=100),
-        sliderInput("C","Mark for C (Yellow)",40,min=1, max=100),
-        sliderInput("B","Mark for B (Blue)",60,min=1, max=100),
-        sliderInput("A","Mark for A (Green)",80,min=1, max=100)
-        
-        
+        sliderInput("E","Lower Bound for E (Red)",10,min=1, max=100),
+        sliderInput("D","Lower Bound for D   (Orange)",20,min=1, max=100),
+        sliderInput("C","Lower Bound for C  (Yellow)",40,min=1, max=100),
+        sliderInput("B","Lower Bound for B (Blue)",60,min=1, max=100),
+        sliderInput("A","Lower Bound for A (Green)",80,min=1, max=100),
+        tableOutput("freqTable")
     
       ),
     
@@ -39,20 +38,17 @@ ui <- fluidPage(
       plotOutput("histogram"),
       
       fluidRow(
-        column(4, 
-               #a place to put a density/histogram 
-               #with vertical lines
-               
-               tableOutput("freqTable")
-               ),
-        column(8,
-    
-               #show summary statistics
+     
                h3(textOutput("mean")),
                h4(textOutput("n")),
                h4(textOutput("quantile"))
-               )
         
+      ),
+      
+      
+      fluidRow(
+        
+        plotOutput("bar")
       )
       
       
@@ -153,6 +149,9 @@ server <- function(input, output,session) {
     varFreqTable()
   })
   
+  output$bar=renderPlot({
+    barplot(varFreqTable(),ylim=c(0,800),col=c("dark grey","red","orange","yellow","blue","green"))
+  })
   
 }
 
