@@ -8,7 +8,7 @@ library(shiny)
 
 #GLOBAL OBJECTS HERE
 
-data=read.csv("./StudentsPerformance.csv")
+data=read.csv("StudentsPerformance.csv")
 data = data[,"math.score"]
 #x=rnorm(1000,50,10)
 

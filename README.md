@@ -140,6 +140,10 @@ Build these applications,
 6. fluid
 7. Must make reactive variables
 
+## Questions
+
+1. What is session?
+
 
 ## Resources 
 
