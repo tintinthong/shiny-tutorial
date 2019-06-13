@@ -137,8 +137,7 @@ Build these applications,
 3. Do not care too much about UI objects
 4. Making HTML
 5. Reactivity is embedded in a lot of functions
-6. fluid
-7. Must make reactive variables
+6. Must make reactive variables
 
 ## Questions
 

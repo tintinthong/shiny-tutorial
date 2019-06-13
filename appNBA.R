@@ -1,19 +1,9 @@
-#this is a great script to know how to use Rshiny
-
 
 library(tidyverse)
 library(reshape2)
 library(rlang)
-#load data
 
-#avergae win
-#average points
-#average assists 
-#average rebounds
-#average steals 
-#average turnovers
-#average fieldgoal percentage
-#average 3pointshots percentage
+
 
 data=read.csv("nba.games.stats.csv")
 data=as_tibble(data)
@@ -27,7 +17,6 @@ vec_names= colnames(data_TOR)[!vec_names %in% vec_except]
 vec_except2=c("TeamPoints","OpponentPoints","Opp.Assists","Opp.TotalRebounds","Opp.Steals","Opp.Blocks","Opp.Turnovers","Opp.FieldGoals.","Opp.FreeThrows","Opp.3PointShots.","Opp.TotalFouls")
 vec_names2= vec_names 
 vec_names2=vec_names[!vec_names2 %in% vec_except2]
-
 
   
 ui <- fluidPage(
