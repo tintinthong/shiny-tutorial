@@ -1,3 +1,6 @@
+
+#Just FORGET ABOUT THIS 
+
 library(tidyverse)
 
 data=read.csv("nba.games.stats.csv")

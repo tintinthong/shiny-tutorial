@@ -37,13 +37,13 @@ ui <- fluidPage(
   sidebarLayout(
     sidebarPanel(
       #select team other than raptors
-      selectInput("team", "Select a team to  be head to head", choices=levels(data_TOR$Opponent)),
+      selectInput("team", "Select a team to be head to head (H2H)", choices=levels(data_TOR$Opponent)),
       
       # #select category for other players
-      selectInput("category","Choose  your stats category",choices=vec_names2),
+      selectInput("category","Stats category for right graph (H2H)",choices=vec_names2),
       
       # #select category for other players
-      selectInput("category2","Choose  your stats category for main graph",choices=vec_names)
+      selectInput("category2","Stats category for big graph (Across league)",choices=vec_names)
       
       
       
@@ -103,7 +103,7 @@ server <- function(input, output, session) {
   
   output$leftTopGraph=renderPlot({
     #data_TOR %>% filter(Opponent=="ATL")%>%group_by(WINorLOSS)%>%ggplot(aes(WINorLOSS))+geom_bar(aes(fill=WINorLOSS))
-    team()%>%group_by(WINorLOSS)%>%ggplot(aes(WINorLOSS))+geom_bar(aes(fill=WINorLOSS),color ="black")
+    team()%>%group_by(WINorLOSS)%>%ggplot(aes(WINorLOSS))+geom_bar(aes(fill=WINorLOSS),color ="black")+ggtitle("Total WINorLOSS")
   })
   
 
@@ -115,7 +115,7 @@ server <- function(input, output, session) {
     x=team()%>%summarise(mean=mean(!! sym(input$category)))%>%print()
     y=team()%>%summarise(meanOpponent=mean(!!sym(paste("Opp.",input$category,sep=""))))%>%print()
 
-    merge(x,y )%>%melt()%>%ggplot(aes(x=variable,y=value))+geom_bar(aes(fill=variable),color="black",stat="identity")
+    merge(x,y )%>%melt()%>%ggplot(aes(x=variable,y=value))+geom_bar(aes(fill=variable),color="black",stat="identity")+ggtitle(paste("Average", input$category))
     # bind_rows(x,y) %>%print()
     
     
@@ -130,7 +130,9 @@ server <- function(input, output, session) {
   output$bottomGraph=renderPlot({
     ggplot(data_TOR, aes_string(x="Date", y=input$category2, group="Opponent")) +
       geom_line(aes_string(color="Opponent"))+
-      scale_x_date(labels = function(x) format(x, "%d-%b"))
+      scale_x_date(labels = function(x) format(x, "%d-%b-%Y"))+
+      ggtitle(input$category2)
+
   })
   
 
